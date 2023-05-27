@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 const path=require('path');
 const user = require('./src/model/model');
 const nodemailer = require('nodemailer');
@@ -9,10 +9,10 @@ const app=express();
 app.use(cors());
 app.use(express.json({urlencoded:true}));
 
-app.use(express.static('dist/frontend'));
+app.use(express.static('dist/front-end'));
 
 
-app.post('/email',(req,res)=>{
+app.post('api/email',(req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE")
     const randomPin = Math.floor(1000 + Math.random() * 9000);
@@ -54,7 +54,7 @@ app.post('/email',(req,res)=>{
  
  })
  
- app.post('/otp',(req,res)=>{
+ app.post('api/otp',(req,res)=>{
    var data = {
      email:req.body.email,
      otp:req.body.otp
